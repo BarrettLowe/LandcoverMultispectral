@@ -21,17 +21,16 @@ Data from the sensor ([Sentinel-2](https://sentinels.copernicus.eu/web/sentinel/
 As with most datasets, there are data to weed out or fish through. 
 
 #### Clouds
-The LandCoverNet dataset contains images with clouds. For expediency of this project, cloudy images are considered no different than non cloudy images.
+The LandCoverNet dataset contains images with clouds. Currently, any pixels with a cloud probability over 50% are ignored from both testing and training. It could be interesting to dig a little deeper into this.
 
 #### Acquisition
-Acquisition of the data was performed by using documentation and the jupyter notebook [here](https://github.com/radiantearth/mlhub-tutorials/blob/main/notebooks/radiant-mlhub-landcovernet.ipynb). Data was acquired by requesting 1 tile/chip from the data set with each classification category. Since some tiles have multiple categories, only 6 tiles were retrieved. This could be improved in the future for better test data.
-
+Acquisition of the data was performed by using documentation and the jupyter notebook [here](https://github.com/radiantearth/mlhub-tutorials/blob/main/notebooks/radiant-mlhub-landcovernet.ipynb). Data was acquired by requesting 1 tile/chip from the data set with each classification category. There is some overlap.
 ## Process
 ### Data Gathering
-Data was gathered using the [LandCover.ipynb](LandCover.ipynb) file. Ultimately, 6 tiles were chosen for training and 1 was chosen for testing.
+Data was gathered using the [LandCover.ipynb](LandCover.ipynb) file. Ultimately, 5 tiles were chosen for training and 1 was chosen for testing.
 
 ### Preprocessing
-None. Improvements here would be to filter out cloudy pixels. Also additional bands could be used if they are converted to the same 10m resolution of the visible-spectrum bands.
+Pixels with a cloud probability > 50% are filtered out. For improvements on the data, additional bands could be used if they are converted to the same 10m resolution of the visible-spectrum bands.
 
 
 ### Training
@@ -46,7 +45,7 @@ This is where this project could potentially go.
 
 [x] Code infrastructure for building and evaluating a model
 [] Model visualization - add plots and images
-[] Code up more specific dataset retrieval functions
-[] Handle pixels that have a high probability of cloud cover
+[x] Code up more specific dataset retrieval functions
+[x] Handle pixels that have a high probability of cloud cover
 [] Hypertuning to find optimal settings for the model
 [] Investigate possibility to predict how the terrain changes over time

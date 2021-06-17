@@ -14,12 +14,13 @@ TEN_M_BANDS = [2,3,4,8]
 
 
 class DFCreator():
-    def GenDF(self, tups: typing.List[typing.Tuple[str,str]], prefix='data'):
+    def GenDF(self, tups: typing.List[typing.Tuple[str,str]], prefix='data', cloudProb = 100):
         """Generate a dataframe using the supplied data
 
         Args:
-            tups (typing.List[typing.Tuple[int,int]]): List of tuples containing (tileId, chipId)
+            tups (typing.List[typing.Tuple[str,str]]): List of tuples containing (tileId, chipId)
             path (str): path to the dataset
+            cloudProb (int): Cloud probability - return values will not have probabilities above this
         """
         ret = pd.DataFrame()
         for tileId,chipId in tups:
@@ -47,4 +48,5 @@ class DFCreator():
                 dataAtDate["cloudProb"] = dateCloudProb.flatten().astype(np.float64)
 
                 ret = ret.append(dataAtDate, ignore_index=True)
+        ret = ret.loc[ret.cloudProb <= cloudProb]
         return ret
