@@ -1,3 +1,4 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/barrettlowe/LandcoverMultispectral/main?filepath=LandCover.ipynb)
 # Multispectral Landcover Classification
 This project is to demonstrate how tensorflow can be used to model and make predictions about multispectral data. Data are gathered from the [LandCoverNet](https://registry.mlhub.earth/10.34911/rdnt.d2ce8i/) dataset. This project is NOT complete. It has been setup hastily to demonstrate usage of machine learning algorithms, python, and data visualization. The results are not *currently* very good...at all
 
