@@ -28,7 +28,7 @@ Acquisition of the data was performed by using documentation and the jupyter not
 
 ## Process
 ### Data Gathering
-Data was gathered using the [LandCover.ipynb](../blob/master/LandCover.ipynb) file. Ultimately, 6 tiles were chosen for training and 1 was chosen for testing.
+Data was gathered using the [LandCover.ipynb](../blob/main/LandCover.ipynb) file. Ultimately, 6 tiles were chosen for training and 1 was chosen for testing.
 
 ### Preprocessing
 None. Improvements here would be to filter out cloudy pixels. Also additional bands could be used if they are converted to the same 10m resolution of the visible-spectrum bands.
