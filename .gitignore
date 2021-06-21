@@ -3,3 +3,5 @@ data/
 .vscode/launch.json
 .vscode/settings.json
 scratch.ipynb
+images/
+Model/

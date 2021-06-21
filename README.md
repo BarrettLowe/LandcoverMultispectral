@@ -19,7 +19,7 @@ Data from the sensor ([Sentinel-2](https://sentinels.copernicus.eu/web/sentinel/
 
 
 ## Dataset Considerations
-As with most datasets, there are data to weed out or fish through. 
+As with most datasets, there are data to weed out or fish through. Each tile has 24 labeled images. For the most part, those images look similar. For this reason, this project only takes 1 of those for training.
 
 #### Clouds
 The LandCoverNet dataset contains images with clouds. Currently, any pixels with a cloud probability over 50% are ignored from both testing and training. It could be interesting to dig a little deeper into this.

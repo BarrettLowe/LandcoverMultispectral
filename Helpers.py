@@ -64,7 +64,7 @@ class DateCSVParser():
         for x in self._data:
             yield (x[0],x[1])
         
-def ShowRGB(tileId, chipId, date, prefix='data'):
+def GetRGB(tileId, chipId, date, prefix='data'):
     chip = ImageChip(tileId, chipId, prefix=prefix)
 
     # normalize for viewing
@@ -80,7 +80,7 @@ def ShowRGB(tileId, chipId, date, prefix='data'):
 
     # merge into 1 rgb image
     image = Image.merge('RGB', channels)
-    image.show()
+    return image
 
 def CountClassLabels(tileId, chipId, date, prefix='data'):
     chip = ImageChip(tileId, chipId, prefix)
@@ -90,6 +90,27 @@ def CountClassLabels(tileId, chipId, date, prefix='data'):
     return counts
 
 def FindTilesAndChips(path):
+    """Return the tiles and chips that are available in the passed path
+
+    Args:
+        path (str): path
+
+    Returns:
+        list: tuples with tile,chip
+    """
     dirs = os.listdir(path)
     tc = [x[len(prefix):].split('_') for x in dirs]
     return [(x[0],x[1]) for x in tc]
+
+def ParseIdsForTilesAndChips(ids):
+    if type(ids) == list:
+        ids = map(lambda x:x.split('_'), ids)
+        return [(x[-2],x[-1]) for x in ids]
+    elif type(ids) == str:
+        x = ids.split('_')
+        return (x[-2],x[-1])
+    else:
+        raise TypeError("Input type should be list or string")
+
+def AlreadyHaveData(id, path):
+    return ParseIdsForTilesAndChips(id) in FindTilesAndChips(path)
